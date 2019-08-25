@@ -10,10 +10,16 @@
 
   transform: skewX(-12deg);
 
+  @include respond(tab-port) {
+    width: 100%;
+    transform: skew(0);
+    text-align: center;
+  }
+
   &__shape {
     width: 15rem;
     height: 15rem;
-    background-color: red;
+    background-color: transparent;
     overflow: hidden;
     float: left;
     -webkit-shape-outside: circle(50% at 50% 50%);
@@ -22,6 +28,12 @@
     clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
     position: relative;
+
+    @include respond(tab-port) {
+      transform: translateX(-1.5rem) skew(0);
+      display: inline-block;
+      float: none;
+    }
   }
 
   &__image {
@@ -29,10 +41,21 @@
     transform: translateX(-4rem) scale(1.4);
     backface-visibility: hidden;
     transition: all 0.8s ease;
+    @include respond(tab-port) {
+      width: 100%;
+      transform: translateX(0) scale(1.4);
+      display: block;
+      float: none;
+    }
   }
 
   &__text {
     transform: skewX(12deg);
+
+    @include respond(tab-port) {
+      transform: skew(0);
+      margin-top: 5rem;
+    }
   }
 
   &__caption {
@@ -56,6 +79,9 @@
   &:hover &__image {
     transform: translateX(-4rem) scale(1);
     filter: blur(0.3rem) brightness(80%);
+    @include respond(tab-port) {
+      transform: translateX(0) scale(1.2);
+    }
   }
 
   &__trans-container {
